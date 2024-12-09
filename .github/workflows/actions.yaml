@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - "**"
+
+permissions:
+  id-token: write  # OIDCトークンの書き込み権限を付与
+  contents: write  # リポジトリの内容に対する書き込み権限を付与
+
 jobs:
   build-doc:
     runs-on: ubuntu-latest
