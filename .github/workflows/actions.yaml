@@ -5,9 +5,9 @@ on:
     branches:
       - "**"
 
-permissions:
-  id-token: write  # OIDCトークンの書き込み権限を付与
-  pages: write  # GitHub Pagesへの書き込み権限を付与
+# permissions:
+#   id-token: write  # OIDCトークンの書き込み権限を付与
+#   pages: write  # GitHub Pagesへの書き込み権限を付与
   # contents: write  # リポジトリの内容に対する書き込み権限を付与
 
 jobs:
@@ -28,12 +28,16 @@ jobs:
         run: |
           sphinx-apidoc -f -o ./document/source .
           sphinx-build -b html ./document/source ./document/build 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./document/build
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2 
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v2
+      #   with:
+      #     path: ./document/build
+      # - name: Deploy to GitHub Pages
+      #   uses: actions/deploy-pages@v2 
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+        - name: Deploy to GitHub Pages
+          uses: peaceiris/actions-gh-pages@v4
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./document/build/html
