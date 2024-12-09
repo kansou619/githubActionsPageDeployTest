@@ -36,8 +36,8 @@ jobs:
       #   uses: actions/deploy-pages@v2 
       #   with:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
-        - name: Deploy to GitHub Pages
-          uses: peaceiris/actions-gh-pages@v4
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: ./document/build/html
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./document/build/html
