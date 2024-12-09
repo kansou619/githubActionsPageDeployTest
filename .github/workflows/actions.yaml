@@ -27,7 +27,7 @@ jobs:
         with:
           path: ./document/build
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2 
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          
