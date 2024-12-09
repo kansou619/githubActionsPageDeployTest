@@ -1,0 +1,31 @@
+name: Actions
+
+on:
+  push:
+    branches:
+      - "**"
+jobs:
+  build-doc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --no-cache-dir -r requirements.txt
+      - name: Build HTML
+        run: |
+          sphinx-apidoc -f -o ./document/source .
+          sphinx-build -b html ./document/source ./document/build 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./document/build/html
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2 
