@@ -7,7 +7,7 @@ class test():
         """
         greeting説明
         Args:
-            name (str): 引数の文字
+            name (str): 引数の文字desukakuninn
 
         Returns:
             str: "Hello,"+ name
