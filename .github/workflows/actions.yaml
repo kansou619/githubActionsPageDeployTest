@@ -24,8 +24,9 @@ jobs:
           sphinx-build -b html ./document/source ./document/build 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
-        with:
           path: ./document/build
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2 
+          with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
