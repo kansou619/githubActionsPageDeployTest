@@ -46,3 +46,4 @@ jobs:
 permissions:
   id-token: write  # OIDCトークンの書き込み権限を付与
   pages: write  # GitHub Pagesへの書き込み権限を付与
+  contents: write  # リポジトリの内容に対する書き込み権限を付与
